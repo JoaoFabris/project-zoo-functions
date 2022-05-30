@@ -17,3 +17,4 @@ function countAnimals(animal) {
   return findAnimalSex;
 }
 module.exports = countAnimals;
+// { specie: 'giraffes', sex: 'female' } specie e sex estão como para e entram na condição da li9nha 12, 15 e 16 respectivamente.
