@@ -13,10 +13,16 @@ describe('Testes da função getOpeningHours', () => {
   it('Verifica se o parque esta fechado ao receber um dia e um horário', () => {
     expect(getOpeningHours('Wednesday', '09:00-PM')).toBe('The zoo is closed');
   });
+  it('Receber "The zoo is open" ao passar um dia e horário em que o zoológico abre', () => {
+    expect(getOpeningHours('Sunday', '09:00-AM')).toBe('The zoo is open');
+  });
   it('erro ao passar um horário com abreviação errada', () => {
     expect(getOpeningHours('Monday', '12:00-LM')).toThrow('The abbreviation must be \'AM\' or \'PM\'');
   });
   it('Receber erro ao passar um horário com os minutos inválidos', () => {
-    expect(() => (getOpeningHours('Monday', '12:60-PM'))).toThrow('minutes must be between 0 and 59');
+    expect(getOpeningHours('Monday', '12:60-PM')).toThrow('minutes must be between 0 and 59');
+  });
+  it('Receber erro ao passar um horário com a hora inválida', () => {
+    expect(getOpeningHours('Friday', '13:00-PM')).toThrow('hours must be between 0 and 12');
   });
 });
